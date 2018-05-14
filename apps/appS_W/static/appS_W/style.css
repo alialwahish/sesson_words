@@ -1,0 +1,50 @@
+.red{ 
+    color: red;   
+}
+.green{
+    color: green;
+}
+.blue{
+    color: blue;
+}
+.black{
+    color: black;
+}
+.lGred{ 
+    color: red; 
+    font-size: 30px;  
+}
+.lGgreen{
+    color: green;
+    font-size: 30px;
+}
+.lGblue{
+    color: blue;
+    font-size: 30px;
+}
+.lGblack{
+    color: black;
+    font-size: 30px;
+}
+
+#dispSession{
+    display: inline-block;
+    position: relative;
+    margin-left: 60px;
+    border-left: 3px solid;
+    padding-left: 40px;
+    overflow:scroll;
+    width: 450px;
+    height: 321px;
+
+
+}
+#getSession{
+    display: inline-block;
+
+}
+button{
+    right: 14px;
+    margin-top: 49PX;
+    vertical-align: top;
+}

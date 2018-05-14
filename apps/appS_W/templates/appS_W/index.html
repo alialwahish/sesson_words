@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'appS_W/style.css' %}">
+    <title>Session Words</title>
+</head>
+<body>
+   <div id="getSession">
+        <h1>Add a New Word</h1>
+    <form action="/process" method="post">
+    <input type="text" name="word">
+    <p>Choose Color</p>
+    <input type="radio" name="color" value="black" hidden="hidden" checked="checked">
+    <input type="radio" name="color" value="red" >Red <br>
+    <input type="radio" name="color" value="green" > Green <br>
+    <input type="radio" name="color" value="blue" > Blue <br>
+    <input type="checkbox" name="isBig" value="isBig"> show in BIG fonts! <br>
+    <input type="submit" name="submit" value="Add new Session"> 
+    {% csrf_token %}
+
+    </form>
+
+   </div>
+   
+
+   <div id="dispSession">
+        
+        <br> 
+       {%for i in request.session.words %}
+            
+                
+            {%if i.color == 'red' and i.isBig is False %}
+            <p class="red"> {{i.word}}    {{i.time}}</p>
+            {%elif i.color == 'red' and i.isBig is True %}
+            <p class="lGred"> {{i.word}}    {{i.time}}</p>
+            {%elif i.color == 'green' and  i.isBig is False%}
+            <p class="green"> {{i.word}}    {{i.time}}</p>
+            {%elif i.color == 'green' and i.isBig is True %}
+            <p class="lGgreen"> {{i.word}}    {{i.time}}</p>
+            {%elif i.color == 'blue' and i.isBig is False%}
+            <p class="blue"> {{i.word}}    {{i.time}}</p>
+            {%elif i.color == 'blue' and i.isBig is True%}
+            <p class="lGblue"> {{i.word}}    {{i.time}}</p>
+            {%elif i.color == 'black' and i.isBig is True%}
+            <p class="lGblack"> {{i.word}}    {{i.time}}</p>
+            
+
+            {% else %}   
+            <p class="black">{{i.word}}    {{i.time}} </p>
+            {% endif %}
+            
+        {% endfor %}
+
+       
+            
+        
+   </div>
+   <a href="/reset"><button>Clear Session</button></a>
+    
+
+
+</body>
+</html>
+
+ 
